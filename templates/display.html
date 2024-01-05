@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+<title>Page Details</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0">
+
+  <h1><b><u>Web Analyzer</u></b></h1>
+  <p>The Best Experience</p> 
+  </div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered	table-hover table-condensed  table-responsive">
+<tr><td><h1>Pictures</h1></td><td><h1>Divs</h1></td><td><h1>Headings</h1></td><td><h1>Paragraphs</h1></td></tr>
+<tr><td valign="top">
+<!--Pictures Table Starts Here-->
+ <table    class="table-striped table-bordered	table-hover table-condensed  table-responsive">
+<tr><td>Key</td><td>Value</td><td>Alt</td></tr>
+{% for key in pictures.keys()%}
+
+
+{% set value=pictures.get(key)%}
+{{ data|safe }}
+<tr><td>{{key}}</td><td><img src='{{value.get('src')}}' style='width:50px;height:50px;'/></td><td>{{value.get('alt')}}</td></tr>
+
+{% endfor %}
+ </table>
+ <!--Pictures Table Ends Here-->
+ </td>
+ <td valign="top">
+ <!--Divs Table Starts Here-->
+ <table   class="table-striped table-bordered	table-hover table-condensed  table-responsive">
+<tr><td>Key</td><td>Value</td></tr>
+{% for key in divs.keys()%}
+
+
+{% set value=divs.get(key)%}
+
+<tr><td>{{key}}</td><td>{{value.text}}</td></tr>
+
+{% endfor %}
+<!--Divs Table Ends Here-->
+ </table>
+ 
+ </td>
+ 
+ 
+ <td valign="top">
+ <!--Headings Table Starts Here-->
+ <table   class="table-striped table-bordered	table-hover table-condensed  table-responsive">
+<tr><td>Key</td><td>Value</td></tr>
+{% for key in headings.keys()%}
+
+
+{% set value=headings.get(key)%}
+
+<tr><td>{{key}}</td><td>{{value.text}}</td></tr>
+
+{% endfor %}
+<!--Headings Table Ends Here-->
+ </table>
+ 
+ </td>
+ 
+ <td valign="top">
+ <!--Paragraphs Table Starts Here-->
+ <table   class="table-striped table-bordered	table-hover table-condensed  table-responsive">
+<tr><td>Key</td><td>Value</td></tr>
+{% for key in paragraphs.keys()%}
+
+
+{% set value=paragraphs.get(key)%}
+
+<tr><td>{{key}}</td><td>{{value.text}}</td></tr>
+
+{% endfor %}
+<!--Paragraph Table Ends Here-->
+ </table>
+ 
+ </td>
+ 
+ 
+ 
+ 
+ </tr>
+ 
+ 
+ </table>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>Sentences</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{sentences}}</td></tr>
+
+</center>
+
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>Words</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{words}}</td></tr>
+
+</center>
+
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>Words of Frequency</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{frequency}}</td></tr>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>frequency graph</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<img src="static/images/Frequencygraph.png" style="width:1200px;"/>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Stopwords</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{stopwords}}</td></tr>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Remove Stopwords</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{removestopwords}}</td></tr>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Frequency After Remove All Stopwords</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{frerstopword}}</td></tr>
+</center>
+
+</div>
+
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>Frequency Graph After Remove all Stopwords</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<img src="static/images/RSWplot.png" style="width:1200px;"/>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Convert Set of Stopwords</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{getset}}</td></tr>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Training set</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{trainingset}}</td></tr>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Intersection </h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{intersectionset}}</td></tr>
+</center>
+
+</div>
+ <div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> Frquencies of Intersection of website set and training set </h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{freinterset}}</td></tr>
+</center>
+
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>Graph plot of intersection of a Website set and Training set</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<img src="static/images/intersetplot.png" style="width:1200px;"/>
+</center>
+
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1> getFullData </h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<tr><td>{{getFullData}}</td></tr>
+</center>
+
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<!--Main Table Starts Here-->
+<table  class="table-striped table-bordered table-hover table-condensed  table-responsive">
+<tr><td><h1>Graph plot  of intersection of a Website set and Training set 2</h1></td></tr>
+</table></div></div></div>
+        <div>
+<center>
+<img src="static/images/training2plot.png" style="width:1200px;"/>
+</center>
+
+</div>
+ <div class="w3-container w3-centered">
+        <div class="w3-container w3-centered">
+     <div class="w3-panel  w3-card-4 w3-center" style="background-color:black">
+    <p><a target="new" href="http://google.com/"><center>Footer</center></a></p>
+  </div>
+   </div>
+        </div>
+ </div>
+ </div>
+</div>
+
+</body>
+</html>
